@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ — SwiftLens</title>
+  <meta name="description" content="Frequently asked questions about SwiftLens — installation, licensing, features, and troubleshooting.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0f0f0f; --ink-soft: #3d3d3d; --ink-muted: #7a7a7a;
+      --line: #e8e8e8; --bg: #fafaf8; --bg-card: #ffffff;
+      --accent: #1a56db; --accent-lt: #ebf0ff;
+      --green: #0a7c3e; --green-lt: #e6f4ed;
+      --radius: 14px;
+      --shadow: 0 1px 3px rgba(0,0,0,.07), 0 8px 24px rgba(0,0,0,.06);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'DM Sans', sans-serif; background: var(--bg);
+      color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased;
+    }
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250,250,248,.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line); padding: 0 40px;
+      display: flex; align-items: center; justify-content: space-between; height: 64px;
+    }
+    .nav-logo {
+      font-family: 'Instrument Serif', serif; font-size: 1.4rem;
+      color: var(--ink); text-decoration: none; letter-spacing: -.02em;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 8px; }
+    .nav-links a {
+      text-decoration: none; color: var(--ink-soft); font-size: .9rem;
+      font-weight: 500; padding: 8px 14px; border-radius: 8px;
+      transition: background .15s, color .15s;
+    }
+    .nav-links a:hover { background: var(--line); color: var(--ink); }
+    .nav-cta { background: var(--ink) !important; color: #fff !important; padding: 9px 20px !important; }
+    .nav-cta:hover { background: #333 !important; }
+
+    .page-hero {
+      max-width: 640px; margin: 0 auto;
+      padding: 70px 40px 50px; text-align: center;
+    }
+    .section-label {
+      font-size: .75rem; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 14px;
+    }
+    h1 {
+      font-family: 'Instrument Serif', serif; font-size: 2.8rem;
+      letter-spacing: -.03em; line-height: 1.1; margin-bottom: 14px;
+    }
+    .hero-sub { font-size: 1rem; color: var(--ink-soft); line-height: 1.7; }
+
+    .faq-wrap {
+      max-width: 760px; margin: 0 auto; padding: 0 40px 80px;
+    }
+
+    /* Category tabs */
+    .cat-tabs {
+      display: flex; gap: 8px; flex-wrap: wrap;
+      margin-bottom: 40px; padding-bottom: 20px;
+      border-bottom: 1px solid var(--line);
+    }
+    .cat-tab {
+      padding: 7px 16px; border-radius: 100px;
+      font-size: .85rem; font-weight: 500;
+      border: 1.5px solid var(--line); background: var(--bg-card);
+      color: var(--ink-soft); cursor: pointer; transition: all .15s;
+    }
+    .cat-tab:hover { border-color: var(--ink); color: var(--ink); }
+    .cat-tab.active {
+      background: var(--ink); border-color: var(--ink);
+      color: #fff;
+    }
+
+    .faq-section { margin-bottom: 48px; display: none; }
+    .faq-section.active { display: block; }
+    .faq-section h2 {
+      font-family: 'Instrument Serif', serif; font-size: 1.5rem;
+      letter-spacing: -.02em; margin-bottom: 20px; color: var(--ink);
+    }
+
+    details {
+      border-bottom: 1px solid var(--line); padding: 20px 0;
+    }
+    details:first-of-type { border-top: 1px solid var(--line); }
+    summary {
+      font-size: .97rem; font-weight: 600; cursor: pointer;
+      list-style: none; display: flex;
+      justify-content: space-between; align-items: flex-start; gap: 16px;
+    }
+    summary::-webkit-details-marker { display: none; }
+    .faq-icon {
+      width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0;
+      background: var(--line); color: var(--ink-muted);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .9rem; transition: background .15s; margin-top: 1px;
+    }
+    details[open] .faq-icon { background: var(--ink); color: #fff; }
+    details[open] .faq-icon::after { content: '−'; }
+    .faq-icon::after { content: '+'; }
+    .faq-answer {
+      margin-top: 14px; font-size: .92rem; color: var(--ink-soft);
+      line-height: 1.75; padding-right: 44px;
+    }
+    .faq-answer code {
+      background: var(--line); padding: 2px 7px;
+      border-radius: 4px; font-size: .85rem; font-family: monospace;
+    }
+    .faq-answer a { color: var(--accent); text-decoration: none; }
+    .faq-answer a:hover { text-decoration: underline; }
+    .faq-answer ul { padding-left: 20px; margin-top: 8px; }
+    .faq-answer li { margin-bottom: 6px; }
+
+    /* Still have questions */
+    .still-questions {
+      background: var(--bg-card); border: 1px solid var(--line);
+      border-radius: 16px; padding: 36px; text-align: center;
+      margin-top: 48px;
+    }
+    .still-questions h3 {
+      font-family: 'Instrument Serif', serif; font-size: 1.6rem;
+      letter-spacing: -.02em; margin-bottom: 10px;
+    }
+    .still-questions p { color: var(--ink-soft); font-size: .95rem; margin-bottom: 22px; }
+    .btn-support {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--ink); color: #fff;
+      padding: 12px 24px; border-radius: 10px;
+      font-size: .95rem; font-weight: 600; text-decoration: none;
+      transition: background .15s;
+    }
+    .btn-support:hover { background: #333; }
+
+    footer {
+      border-top: 1px solid var(--line); padding: 32px 40px;
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .footer-logo {
+      font-family: 'Instrument Serif', serif; font-size: 1.1rem;
+      color: var(--ink); text-decoration: none;
+    }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-links a {
+      font-size: .83rem; color: var(--ink-muted);
+      text-decoration: none; transition: color .15s;
+    }
+    .footer-links a:hover { color: var(--ink); }
+    .footer-copy { font-size: .8rem; color: var(--ink-muted); }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      .page-hero { padding: 50px 20px 36px; }
+      h1 { font-size: 2.2rem; }
+      .faq-wrap { padding: 0 20px 60px; }
+      footer { padding: 24px 20px; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Swift<span>Lens</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#pricing">Pricing</a>
+    <a href="support.html">Support</a>
+    <a href="download.html" class="nav-cta">Download</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="section-label">FAQ</div>
+  <h1>Frequently asked questions</h1>
+  <p class="hero-sub">Everything you need to know about SwiftLens — from installation to how the AI works.</p>
+</div>
+
+<div class="faq-wrap">
+
+  <div class="cat-tabs">
+    <div class="cat-tab active" onclick="showCat('general', this)">General</div>
+    <div class="cat-tab" onclick="showCat('install', this)">Installation</div>
+    <div class="cat-tab" onclick="showCat('features', this)">Features</div>
+    <div class="cat-tab" onclick="showCat('license', this)">Licensing</div>
+    <div class="cat-tab" onclick="showCat('troubleshoot', this)">Troubleshooting</div>
+  </div>
+
+  <!-- GENERAL -->
+  <div class="faq-section active" id="cat-general">
+    <h2>General</h2>
+
+    <details>
+      <summary>What exactly is SwiftLens? <div class="faq-icon"></div></summary>
+      <div class="faq-answer">SwiftLens is a lightweight Windows application that runs silently in the background. Press a hotkey and it captures your screen, sends it to a powerful AI model (Gemini 2.5 Flash or Llama 4), and delivers the answer — either on-screen in the HUD or directly to your Telegram. It's designed to help you understand, analyse, and get answers about anything on your screen, instantly.</div>
+    </details>
+
+    <details>
+      <summary>Is SwiftLens safe to use? <div class="faq-icon"></div></summary>
+      <div class="faq-answer">Yes. SwiftLens only captures your screen when you press the hotkey — it does not run in the background recording anything. It does not collect personal data, does not log your queries, and all communication is over encrypted HTTPS. Screenshots are sent to the AI engine and immediately discarded.</div>
+    </details>
+
+    <details>
+      <summary>Is SwiftLens really invisible to screen recording software? <div class="faq-icon"></div></summary>
+      <div class="faq-answer">Yes. SwiftLens uses the official Windows <code>SetWindowDisplayAffinity</code> API with the <code>WDA_EXCLUDEFROMCAPTURE</code> flag — the same method used by banking apps and DRM software. This makes all SwiftLens windows completely invisible to Zoom, Microsoft Teams, Google Meet, OBS, and all standard screen recorders. The application window will appear blank or not at all to any capture software.</div>
+    </details>
+
+    <details>
+      <summary>Does SwiftLens work without an internet connection? <div class="faq-icon"></div></summary>
+      <div class="faq-answer">Yes — for as long as your subscription is active. SwiftLens includes a built-in offline AI mode powered by the Phi-3 Mini model (downloaded separately, ~2.3 GB). When internet is lost, SwiftLens automatically switches to offline mode. Online AI returns instantly and automatically the moment your connection is restored. Offline mode is fully disabled on your subscription expiry date.</div>
+    </details>
+
+    <details>
+      <summary>What AI models does SwiftLens use? <div class="faq-icon"></div></summary>
+      <div class="faq-answer">SwiftLens uses three AI models:
+        <ul>
+          <li><strong>Gemini 2.5 Flash</strong> — Google's fastest multimodal model. Tried first for speed and accuracy.</li>
+          <li><strong>Llama 4 Scout (via Groq)</strong> — Meta's open-source model running on Groq's ultra-fast inference hardware. Automatically used if Gemini is rate-limited.</li>
+          <li><strong>Phi-3 Mini (offline)</strong> — Microsoft's compact model that runs locally on your CPU. No internet needed.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <!-- INSTALLATION -->
+  <div class="faq-section" id="cat-install">
+    <h2>Installation</h2>
+
+    <details>
+      <summary>What are the system requirements? <div class="faq-icon"></div></summary>
+      <div class="faq-answer">
+        <ul>
+          <li><strong>OS:</strong> Windows 10 (version 1903 or later) or Windows 11</li>
+          <li><strong>RAM:</strong> 4 GB minimum (8 GB recommended for offline AI mode)</li>
+          <li><strong>Storage:</strong> 200 MB for the app · 2.5 GB if you install offline AI model</li>
+          <li><strong>GPU:</strong> Not required — runs entirely on CPU</li>
+          <li><strong>Internet:</strong> Required for online AI modes and license validation</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>How do I install SwiftLens? <div class="faq-icon"></div></summary>
+      <div class="faq-answer">
+        <ol style="padding-left:18px; margin-top:6px;">
+          <li style="margin-bottom:8px">Go to the <a href="download.html">Download page</a> and enter your license key.</li>
+          <li style="margin-bottom:8px">Download and extract the ZIP file anywhere on your computer.</li>
+          <li style="margin-bottom:8px">Run <code>SwiftLens.exe</code> — no installation wizard required.</li>
+          <li style="margin-bottom:8px">On first launch, enter your license key and connect your Telegram account.</li>
+          <li>SwiftLens will create a desktop shortcut automatically.</li>
+        </ol>
+      </div>
+    </details>
+
+    <details>
+      <summary>Do I need administrator rights to install? <div class="faq-icon"></div></summary>
+      <div class="faq-answer">No. SwiftLens is a portable application — it runs directly from the extracted folder with no installation. You do not need admin rights. Simply extract the ZIP and run the EXE.</div>
+    </details>
+
+    <details>
+      <summary>How do I set up the Telegram connection? <div class="faq-icon"></div></summary>
+      <div class="faq-answer">On first launch, SwiftLens shows a 6-digit PIN code. Open Telegram, search for the SwiftLens bot username shown on screen, press Start, and send the PIN. SwiftLens will confirm the connection within seconds. After that, pressing Alt+T sends AI analysis directly to your Telegram chat.</div>
+    </details>
+
+    <details>
+      <summary>How do I install the offline AI model? <div class="faq-icon"></div></summary>
+      <div class="faq-answer">In the SwiftLens HUD, click the 🔌 Offline AI button. If the model isn't installed yet, you'll see a Download button. Click it and SwiftLens will download the Phi-3 Mini model (~2.3 GB) directly. The download supports resuming if interrupted. Once downloaded, offline AI is available instantly with no further setup.</div>
+    </details>
+  </div>
+
+  <!-- FEATURES -->
+  <div class="faq-section" id="cat-features">
+    <h2>Features</h2>
+
+    <details>
+      <summary>What are the keyboard shortcuts? <div class="faq-icon"></div></summary>
+      <div class="faq-answer">
+        <ul>
+          <li><strong>Alt + S</strong> — Open the on-screen HUD (Screen Analyse mode)</li>
+          <li><strong>Alt + T</strong> — Capture screen and send analysis to Telegram</li>
+          <li><strong>Enter</strong> — Submit your question in the HUD</li>
+          <li><strong>Shift + Enter</strong> — New line in the question box</li>
+        </ul>
+        Hotkeys work system-wide — you don't need to click on SwiftLens first.
+      </div>
+    </details>
+
+    <details>
+      <summary>What is the HUD and how is it different from Telegram mode? <div class="faq-icon"></div></summary>
+      <div class="faq-answer">The <strong>HUD (Alt+S)</strong> is an on-screen overlay where you type your question and the answer appears right on your screen — invisible to any recording software. It supports three modes: Screen Analyse (captures and analyses what's on screen), Ask Anything (text-only AI chat), and Offline AI.<br><br>The <strong>Telegram mode (Alt+T)</strong> captures your screen silently and sends the AI's answer to your Telegram chat. This is useful when you need the answer delivered discreetly to your phone or another device.</div>
+    </details>
+
+    <details>
+      <summary>Can SwiftLens solve maths, code, and MCQ questions? <div class="faq-icon"></div></summary>
+      <div class="faq-answer">Yes. SwiftLens sends your screen to Gemini 2.5 Flash which is capable of solving complex mathematics, explaining and debugging code, answering multiple-choice questions, translating text, summarising documents, and much more. For best results, make sure the question is clearly visible on screen before pressing the hotkey.</div>
+    </details>
+
+    <details>
+      <summary>How fast are the AI responses? <div class="faq-icon"></div></summary>
+      <div class="faq-answer">Online responses typically arrive in 1–4 seconds depending on your internet speed and the complexity of the question. Offline AI (Phi-3 Mini on CPU) takes 15–60 seconds depending on your CPU speed and the length of the answer.</div>
+    </details>
+  </div>
+
+  <!-- LICENSING -->
+  <div class="faq-section" id="cat-license">
+    <h2>Licensing</h2>
+
+    <details>
+      <summary>What happens when my subscription expires? <div class="faq-icon"></div></summary>
+      <div class="faq-answer">On your exact expiry date, all AI models — both online and offline — are disabled. The app displays a "Subscription Expired" message. After renewing, SwiftLens automatically detects the renewal within 20 minutes and restores full access without requiring a restart.</div>
+    </details>
+
+    <details>
+      <summary>Can I use my license key on multiple computers? <div class="faq-icon"></div></summary>
+      <div class="faq-answer">Each license key is issued for a single user on a single machine. You can reinstall on the same machine freely. If you need to transfer to a new computer or require multiple seats, please contact support.</div>
+    </details>
+
+    <details>
+      <summary>What happens if I lose my license key? <div class="faq-icon"></div></summary>
+      <div class="faq-answer">Check your original purchase confirmation email — your license key is included there. If you cannot find it, contact <a href="support.html">support</a> with your purchase email address and we will resend it.</div>
+    </details>
+
+    <details>
+      <summary>Is the subscription auto-renewed? <div class="faq-icon"></div></summary>
+      <div class="faq-answer">No. SwiftLens subscriptions are manual — you will need to renew before your expiry date to maintain access. We recommend saving your license key so you can re-download new versions at any time.</div>
+    </details>
+
+    <details>
+      <summary>Can I get a refund? <div class="faq-icon"></div></summary>
+      <div class="faq-answer">If SwiftLens does not work on your system despite following all setup instructions and working with our support team, we offer a refund within 7 days of purchase. Please contact <a href="support.html">support</a> with your purchase details.</div>
+    </details>
+  </div>
+
+  <!-- TROUBLESHOOTING -->
+  <div class="faq-section" id="cat-troubleshoot">
+    <h2>Troubleshooting</h2>
+
+    <details>
+      <summary>SwiftLens says "License not found" but I have a valid key <div class="faq-icon"></div></summary>
+      <div class="faq-answer">Make sure you are entering the key exactly as received — it is case-sensitive. Copy and paste directly from your email rather than typing it. If the problem persists, contact <a href="support.html">support</a> with your purchase email and we will check your license status.</div>
+    </details>
+
+    <details>
+      <summary>The AI is not responding or showing "Network Error" <div class="faq-icon"></div></summary>
+      <div class="faq-answer">Check your internet connection first. If connected, SwiftLens may be temporarily unable to reach the AI server — wait 30 seconds and try again. You can switch to 🔌 Offline AI mode in the meantime if the model is installed.</div>
+    </details>
+
+    <details>
+      <summary>SwiftLens is not visible / I can't open it <div class="faq-icon"></div></summary>
+      <div class="faq-answer">SwiftLens runs in the background and only appears when you press Alt+S or Alt+T. Check your system tray (bottom-right of taskbar) for the SwiftLens icon. If it's already running, pressing the hotkey again will restore the HUD. If nothing happens, try restarting SwiftLens.</div>
+    </details>
+
+    <details>
+      <summary>My system clock is wrong and SwiftLens won't start <div class="faq-icon"></div></summary>
+      <div class="faq-answer">SwiftLens compares your local system clock against the server time to prevent tampering. If they differ by more than 5 minutes, SwiftLens will block access. To fix this: right-click the clock in your taskbar → Adjust date/time → click "Sync now". Then restart SwiftLens.</div>
+    </details>
+
+    <details>
+      <summary>Windows Defender or antivirus is flagging SwiftLens <div class="faq-icon"></div></summary>
+      <div class="faq-answer">This is a common false positive for applications that use screen capture and system-level APIs. SwiftLens is built with Python and PyInstaller — these sometimes trigger heuristic antivirus warnings. You can safely add an exception for SwiftLens.exe in your antivirus settings. We do not collect any data and the source code is clean.</div>
+    </details>
+  </div>
+
+  <!-- STILL HAVE QUESTIONS -->
+  <div class="still-questions">
+    <h3>Still have questions?</h3>
+    <p>Our support team typically responds within a few hours.</p>
+    <a href="support.html" class="btn-support">💬 &nbsp;Contact Support</a>
+  </div>
+
+</div>
+
+<footer>
+  <a href="index.html" class="footer-logo">SwiftLens</a>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="download.html">Download</a>
+    <a href="support.html">Support</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </div>
+  <div class="footer-copy">© 2025 SwiftLens. All rights reserved.</div>
+</footer>
+
+<script>
+  function showCat(id, tab) {
+    document.querySelectorAll('.faq-section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('cat-' + id).classList.add('active');
+    tab.classList.add('active');
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support — SwiftLens</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0f0f0f; --ink-soft: #3d3d3d; --ink-muted: #7a7a7a;
+      --line: #e8e8e8; --bg: #fafaf8; --bg-card: #ffffff;
+      --accent: #1a56db; --accent-lt: #ebf0ff;
+      --green: #0a7c3e; --green-lt: #e6f4ed;
+      --red: #b91c1c; --red-lt: #fee2e2;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'DM Sans', sans-serif; background: var(--bg);
+      color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased;
+    }
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250,250,248,.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line); padding: 0 40px;
+      display: flex; align-items: center; justify-content: space-between; height: 64px;
+    }
+    .nav-logo {
+      font-family: 'Instrument Serif', serif; font-size: 1.4rem;
+      color: var(--ink); text-decoration: none; letter-spacing: -.02em;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 8px; }
+    .nav-links a {
+      text-decoration: none; color: var(--ink-soft); font-size: .9rem;
+      font-weight: 500; padding: 8px 14px; border-radius: 8px; transition: background .15s;
+    }
+    .nav-links a:hover { background: var(--line); color: var(--ink); }
+    .nav-cta { background: var(--ink) !important; color: #fff !important; padding: 9px 20px !important; }
+
+    .page-hero {
+      max-width: 640px; margin: 0 auto;
+      padding: 70px 40px 50px; text-align: center;
+    }
+    .section-label {
+      font-size: .75rem; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 14px;
+    }
+    h1 {
+      font-family: 'Instrument Serif', serif; font-size: 2.8rem;
+      letter-spacing: -.03em; line-height: 1.1; margin-bottom: 14px;
+    }
+    .hero-sub { font-size: 1rem; color: var(--ink-soft); line-height: 1.7; }
+
+    .support-wrap {
+      max-width: 900px; margin: 0 auto; padding: 0 40px 80px;
+    }
+
+    /* Options grid */
+    .support-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px; margin-bottom: 56px;
+    }
+    .support-card {
+      background: var(--bg-card); border: 1px solid var(--line);
+      border-radius: 16px; padding: 28px;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .support-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.08); transform: translateY(-2px); }
+    .support-card-icon {
+      font-size: 2rem; margin-bottom: 14px; display: block;
+    }
+    .support-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 8px; }
+    .support-card p { font-size: .88rem; color: var(--ink-soft); line-height: 1.65; margin-bottom: 18px; }
+    .support-card a {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--accent); font-size: .88rem; font-weight: 600;
+      text-decoration: none; transition: gap .15s;
+    }
+    .support-card a:hover { gap: 10px; }
+
+    /* Contact form */
+    .contact-section {
+      background: var(--bg-card); border: 1px solid var(--line);
+      border-radius: 20px; padding: 44px; max-width: 620px; margin: 0 auto;
+    }
+    .contact-section h2 {
+      font-family: 'Instrument Serif', serif; font-size: 1.8rem;
+      letter-spacing: -.02em; margin-bottom: 8px;
+    }
+    .contact-section > p { color: var(--ink-soft); font-size: .92rem; margin-bottom: 28px; }
+
+    .form-row { margin-bottom: 20px; }
+    .form-row label {
+      display: block; font-size: .82rem; font-weight: 600;
+      color: var(--ink-soft); margin-bottom: 7px;
+    }
+    .form-row input, .form-row select, .form-row textarea {
+      width: 100%; padding: 12px 14px;
+      background: var(--bg); border: 1.5px solid var(--line);
+      border-radius: 10px; color: var(--ink); font-size: .95rem;
+      font-family: 'DM Sans', sans-serif; outline: none;
+      transition: border-color .15s, box-shadow .15s;
+      resize: vertical;
+    }
+    .form-row input:focus, .form-row select:focus, .form-row textarea:focus {
+      border-color: var(--accent); box-shadow: 0 0 0 3px rgba(26,86,219,.1);
+    }
+    .form-row textarea { min-height: 120px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .btn-submit {
+      width: 100%; padding: 14px; background: var(--ink); color: #fff;
+      border: none; border-radius: 10px; font-size: 1rem; font-weight: 600;
+      font-family: 'DM Sans', sans-serif; cursor: pointer; transition: background .15s;
+    }
+    .btn-submit:hover { background: #222; }
+    .btn-submit:disabled { background: var(--line); color: var(--ink-muted); cursor: not-allowed; }
+
+    .form-note { font-size: .8rem; color: var(--ink-muted); margin-top: 12px; text-align: center; }
+
+    .msg {
+      padding: 14px 16px; border-radius: 10px; font-size: .9rem;
+      margin-top: 16px; display: none; line-height: 1.6;
+    }
+    .msg.success { background: var(--green-lt); border: 1px solid #86efac; color: var(--green); }
+    .msg.error   { background: var(--red-lt); border: 1px solid #fca5a5; color: var(--red); }
+
+    footer {
+      border-top: 1px solid var(--line); padding: 32px 40px;
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .footer-logo { font-family: 'Instrument Serif', serif; font-size: 1.1rem; color: var(--ink); text-decoration: none; }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { font-size: .83rem; color: var(--ink-muted); text-decoration: none; transition: color .15s; }
+    .footer-links a:hover { color: var(--ink); }
+    .footer-copy { font-size: .8rem; color: var(--ink-muted); }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      .page-hero, .support-wrap { padding-left: 20px; padding-right: 20px; }
+      h1 { font-size: 2.2rem; }
+      .form-grid { grid-template-columns: 1fr; }
+      .contact-section { padding: 28px 20px; }
+      footer { padding: 24px 20px; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Swift<span>Lens</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="faq.html">FAQ</a>
+    <a href="download.html" class="nav-cta">Download</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="section-label">Support</div>
+  <h1>We're here to help</h1>
+  <p class="hero-sub">Check the FAQ first — most questions are answered there. If you still need help, send us a message and we'll get back to you promptly.</p>
+</div>
+
+<div class="support-wrap">
+
+  <div class="support-grid">
+    <div class="support-card">
+      <span class="support-card-icon">📖</span>
+      <h3>Read the FAQ</h3>
+      <p>Covers installation, features, licensing, and the most common issues — usually faster than waiting for a reply.</p>
+      <a href="faq.html">Browse all questions →</a>
+    </div>
+    <div class="support-card">
+      <span class="support-card-icon">⬇</span>
+      <h3>Re-download SwiftLens</h3>
+      <p>Need to reinstall or download a new version? Go to the Download page and enter your license key.</p>
+      <a href="download.html">Go to Downloads →</a>
+    </div>
+    <div class="support-card">
+      <span class="support-card-icon">🔑</span>
+      <h3>Lost your license key?</h3>
+      <p>Check your original purchase email. Can't find it? Send us a message below with your purchase email address.</p>
+      <a href="#contact-form">Contact support →</a>
+    </div>
+  </div>
+
+  <!-- CONTACT FORM -->
+  <div class="contact-section" id="contact-form">
+    <h2>Send a message</h2>
+    <p>We typically respond within a few hours. Please include as much detail as possible so we can help you quickly.</p>
+
+    <div class="form-grid">
+      <div class="form-row">
+        <label for="s-name">Your name</label>
+        <input type="text" id="s-name" placeholder="John Doe">
+      </div>
+      <div class="form-row">
+        <label for="s-email">Email address</label>
+        <input type="email" id="s-email" placeholder="you@example.com">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <label for="s-key">License key (if applicable)</label>
+      <input type="text" id="s-key" placeholder="SWIFTLENS-XXXX-YYYY-ZZZZ">
+    </div>
+
+    <div class="form-row">
+      <label for="s-topic">Topic</label>
+      <select id="s-topic">
+        <option value="">Select a topic…</option>
+        <option value="install">Installation help</option>
+        <option value="license">License / activation issue</option>
+        <option value="download">Download problem</option>
+        <option value="bug">Bug or error</option>
+        <option value="refund">Refund request</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+
+    <div class="form-row">
+      <label for="s-msg">Message</label>
+      <textarea id="s-msg" placeholder="Describe your issue in detail — include any error messages you see, your Windows version, and what you were doing when the problem occurred."></textarea>
+    </div>
+
+    <button class="btn-submit" id="submit-btn" onclick="submitForm()">
+      Send Message
+    </button>
+    <p class="form-note">🔒 Your message is private and only seen by the SwiftLens support team.</p>
+    <div class="msg" id="form-msg"></div>
+  </div>
+
+</div>
+
+<footer>
+  <a href="index.html" class="footer-logo">SwiftLens</a>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="download.html">Download</a>
+    <a href="faq.html">FAQ</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </div>
+  <div class="footer-copy">© 2025 SwiftLens. All rights reserved.</div>
+</footer>
+
+<script>
+  async function submitForm() {
+    const name  = document.getElementById('s-name').value.trim();
+    const email = document.getElementById('s-email').value.trim();
+    const topic = document.getElementById('s-topic').value;
+    const msg   = document.getElementById('s-msg').value.trim();
+    const msgEl = document.getElementById('form-msg');
+    const btn   = document.getElementById('submit-btn');
+
+    if (!name || !email || !topic || !msg) {
+      msgEl.textContent = 'Please fill in all required fields.';
+      msgEl.className = 'msg error';
+      msgEl.style.display = 'block';
+      return;
+    }
+    if (!email.includes('@')) {
+      msgEl.textContent = 'Please enter a valid email address.';
+      msgEl.className = 'msg error';
+      msgEl.style.display = 'block';
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    // Using Formspree — replace YOUR_FORMSPREE_ID with your form ID
+    // Sign up free at formspree.io, create a form, get the ID
+    try {
+      const res = await fetch('https://formspree.io/f/mdavowgp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name, email,
+          license_key: document.getElementById('s-key').value.trim(),
+          topic, message: msg,
+        }),
+      });
+
+      if (res.ok) {
+        msgEl.innerHTML = '✅ Message sent! We\'ll get back to you at <strong>' + email + '</strong> as soon as possible.';
+        msgEl.className = 'msg success';
+        msgEl.style.display = 'block';
+        btn.textContent = 'Sent ✓';
+      } else {
+        throw new Error('Server error');
+      }
+    } catch {
+      msgEl.textContent = 'Something went wrong. Please try emailing us directly.';
+      msgEl.className = 'msg error';
+      msgEl.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Send Message';
+    }
+  }
+</script>
+
+</body>
+</html>

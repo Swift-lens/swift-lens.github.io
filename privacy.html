@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — SwiftLens</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0f0f0f; --ink-soft: #3d3d3d; --ink-muted: #7a7a7a;
+      --line: #e8e8e8; --bg: #fafaf8; --bg-card: #ffffff;
+      --accent: #1a56db; --accent-lt: #ebf0ff;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'DM Sans', sans-serif; background: var(--bg);
+      color: var(--ink); line-height: 1.7; -webkit-font-smoothing: antialiased;
+    }
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250,250,248,.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line); padding: 0 40px;
+      display: flex; align-items: center; justify-content: space-between; height: 64px;
+    }
+    .nav-logo {
+      font-family: 'Instrument Serif', serif; font-size: 1.4rem;
+      color: var(--ink); text-decoration: none; letter-spacing: -.02em;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 8px; }
+    .nav-links a {
+      text-decoration: none; color: var(--ink-soft); font-size: .9rem;
+      font-weight: 500; padding: 8px 14px; border-radius: 8px; transition: background .15s;
+    }
+    .nav-links a:hover { background: var(--line); }
+    .nav-cta { background: var(--ink) !important; color: #fff !important; padding: 9px 20px !important; }
+
+    .legal-wrap {
+      max-width: 720px; margin: 0 auto; padding: 60px 40px 80px;
+    }
+    .legal-meta {
+      font-size: .8rem; color: var(--ink-muted);
+      margin-bottom: 36px; padding-bottom: 20px;
+      border-bottom: 1px solid var(--line);
+    }
+    h1 {
+      font-family: 'Instrument Serif', serif; font-size: 2.4rem;
+      letter-spacing: -.03em; margin-bottom: 10px;
+    }
+    h2 {
+      font-family: 'Instrument Serif', serif; font-size: 1.4rem;
+      letter-spacing: -.02em; margin: 36px 0 12px;
+    }
+    p { font-size: .95rem; color: var(--ink-soft); margin-bottom: 14px; }
+    ul { padding-left: 20px; margin-bottom: 14px; }
+    li { font-size: .95rem; color: var(--ink-soft); margin-bottom: 6px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .highlight-box {
+      background: var(--accent-lt); border-left: 3px solid var(--accent);
+      padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 20px 0;
+      font-size: .92rem; color: var(--ink-soft);
+    }
+
+    footer {
+      border-top: 1px solid var(--line); padding: 32px 40px;
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .footer-logo { font-family: 'Instrument Serif', serif; font-size: 1.1rem; color: var(--ink); text-decoration: none; }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { font-size: .83rem; color: var(--ink-muted); text-decoration: none; }
+    .footer-links a:hover { color: var(--ink); }
+    .footer-copy { font-size: .8rem; color: var(--ink-muted); }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      .legal-wrap { padding: 40px 20px 60px; }
+      h1 { font-size: 2rem; }
+      footer { padding: 24px 20px; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Swift<span>Lens</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="faq.html">FAQ</a>
+    <a href="download.html" class="nav-cta">Download</a>
+  </div>
+</nav>
+
+<div class="legal-wrap">
+  <h1>Privacy Policy</h1>
+  <div class="legal-meta">Last updated: June 2025 &nbsp;·&nbsp; Effective immediately</div>
+
+  <div class="highlight-box">
+    <strong>The short version:</strong> SwiftLens does not sell your data, does not store your screenshots, and does not track you. Your screen captures are processed by third-party AI services and immediately discarded.
+  </div>
+
+  <h2>1. Information We Collect</h2>
+  <p>When you use SwiftLens, we collect minimal information necessary to operate the service:</p>
+  <ul>
+    <li><strong>License key</strong> — used to validate your subscription against our server.</li>
+    <li><strong>Telegram chat ID</strong> — stored locally on your device to deliver AI responses to your Telegram account.</li>
+    <li><strong>Server heartbeat data</strong> — your license key is sent to our server periodically to verify your subscription is still active. We log the timestamp but not the content of your queries.</li>
+    <li><strong>Download portal</strong> — we log your IP address and user agent when you request a download token, purely for rate-limiting and abuse prevention. This data is deleted after 7 days.</li>
+  </ul>
+
+  <h2>2. Screenshots and AI Queries</h2>
+  <p>When you press Alt+S or Alt+T, SwiftLens captures your screen and sends it to one of the following AI providers:</p>
+  <ul>
+    <li><strong>Google Gemini</strong> — governed by Google's Privacy Policy and Terms of Service</li>
+    <li><strong>Groq (Llama 4)</strong> — governed by Groq's Privacy Policy</li>
+    <li><strong>Phi-3 Mini (offline)</strong> — runs entirely on your device. Nothing is sent anywhere.</li>
+  </ul>
+  <p>Screenshots are transmitted over HTTPS and are not stored by SwiftLens on any server. Third-party AI providers may process images according to their own policies — we recommend reviewing their terms if this is a concern.</p>
+
+  <h2>3. How We Use Your Information</h2>
+  <ul>
+    <li>To validate your subscription and grant access to the application</li>
+    <li>To deliver AI-generated responses to your Telegram account</li>
+    <li>To prevent abuse of the download system</li>
+    <li>To respond to support requests you submit through our website</li>
+  </ul>
+  <p>We do not use your information for advertising, profiling, or any purpose beyond operating the SwiftLens service.</p>
+
+  <h2>4. Data Sharing</h2>
+  <p>We do not sell, rent, or share your personal data with third parties except:</p>
+  <ul>
+    <li>AI providers (Google, Groq) who process your screen captures to generate responses</li>
+    <li>Supabase — our database provider, used to store license information</li>
+    <li>Cloudflare — used for file delivery and bot protection on the download portal</li>
+  </ul>
+
+  <h2>5. Data Storage and Security</h2>
+  <p>Your license key and configuration are stored locally on your device in AES-256-GCM encrypted files, derived from a machine-specific key. They cannot be read by other users or applications on your system.</p>
+  <p>Our servers use industry-standard security practices. License data is stored in Supabase with Row Level Security enabled, preventing any direct public access.</p>
+
+  <h2>6. Your Rights</h2>
+  <p>You may request deletion of your license record at any time by contacting support. Deleting your record will immediately revoke access to the application.</p>
+
+  <h2>7. Contact</h2>
+  <p>If you have privacy concerns, please contact us through the <a href="support.html">Support page</a>.</p>
+</div>
+
+<footer>
+  <a href="index.html" class="footer-logo">SwiftLens</a>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="terms.html">Terms of Service</a>
+    <a href="support.html">Support</a>
+  </div>
+  <div class="footer-copy">© 2025 SwiftLens. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
