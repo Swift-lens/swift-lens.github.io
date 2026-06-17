@@ -9,7 +9,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    :root {
+  @font-face {
+  font-family: 'Bahnschrift SemiBold SemiConden';
+  src: local('Bahnschrift SemiBold SemiConden'), local('Bahnschrift');
+  font-weight: 600;
+  font-stretch: semi-condensed;
+}  
+  :root {
       --ink:       #0f0f0f;
       --ink-soft:  #3d3d3d;
       --ink-muted: #7a7a7a;
@@ -195,7 +201,7 @@
       margin-bottom: 14px;
     }
     h2 {
-      font-family: 'Instrument Serif', serif;
+      font-family: 'Bahnschrift SemiBold SemiConden', sans-serif;
       font-size: clamp(2rem, 4vw, 2.8rem);
       letter-spacing: -.025em; line-height: 1.12;
       margin-bottom: 16px;
@@ -509,16 +515,17 @@
 <section id="pricing">
   <div style="text-align: center; margin-bottom: 0;">
     <div class="section-label" style="text-align:center">Pricing</div>
-    <h2 style="text-align:center">Simple, honest pricing</h2>
+    <h2 style="text-align:center">Simple & Transparent pricing</h2>
     <p class="section-sub" style="margin: 0 auto; text-align:center">One plan, all features. Cancel any time.</p>
   </div>
   <div class="pricing-wrap">
     <div class="pricing-card">
       <div class="pricing-badge">Most Popular</div>
-      <div class="pricing-price"><sup>$</sup>9<span style="font-size:1.8rem">.99</span></div>
+      <div class="pricing-price"><span style="font-size:5.8rem">1000৳</span></div>
       <div class="pricing-period">per month · cancel anytime</div>
       <ul class="pricing-features">
         <li><span class="check">✓</span> Unlimited screen captures & AI queries</li>
+	<li><span class="check">✓</span> Invisible interview assistant</li>
         <li><span class="check">✓</span> Gemini 2.5 Flash + Llama 4 Scout</li>
         <li><span class="check">✓</span> Telegram delivery mode</li>
         <li><span class="check">✓</span> Offline AI (Phi-3 Mini, CPU-only)</li>
