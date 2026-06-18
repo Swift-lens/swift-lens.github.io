@@ -8,6 +8,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
+    @font-face {
+  font-family: 'Bahnschrift SemiBold SemiConden';
+  src: local('Bahnschrift SemiBold SemiConden'), local('Bahnschrift');
+  font-weight: 600;
+  font-stretch: semi-condensed;
+}  
     :root {
       --ink: #0f0f0f; --ink-soft: #3d3d3d; --ink-muted: #7a7a7a;
       --line: #e8e8e8; --bg: #fafaf8; --bg-card: #ffffff;
@@ -27,8 +33,11 @@
       display: flex; align-items: center; justify-content: space-between; height: 64px;
     }
     .nav-logo {
-      font-family: 'Instrument Serif', serif; font-size: 1.4rem;
-      color: var(--ink); text-decoration: none; letter-spacing: -.02em;
+      font-family: 'Bahnschrift SemiBold SemiConden', sans-serif;
+      font-size: 1.4rem; color: var(--ink);
+      text-decoration: none; letter-spacing: -.02em;
+      display: flex; align-items: center; gap: 0px;
+      margin-right: 10px
     }
     .nav-logo span { color: var(--accent); }
     .nav-links { display: flex; align-items: center; gap: 8px; }
@@ -132,7 +141,7 @@
       display: flex; align-items: center;
       justify-content: space-between; flex-wrap: wrap; gap: 16px;
     }
-    .footer-logo { font-family: 'Instrument Serif', serif; font-size: 1.1rem; color: var(--ink); text-decoration: none; }
+    .footer-logo { font-family: 'Candara Light', sans-serif; font-size: 1.2rem; color: var(--ink); text-decoration: none; }
     .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
     .footer-links a { font-size: .83rem; color: var(--ink-muted); text-decoration: none; transition: color .15s; }
     .footer-links a:hover { color: var(--ink); }
@@ -152,7 +161,7 @@
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo">Swift<span>Lens</span></a>
+  <a href="index.html" class="nav-logo"><img src="Swift_Lens.png" alt="SwiftLens">Swift<span>Lens</span></a>
   <div class="nav-links">
     <a href="index.html">Home</a>
     <a href="faq.html">FAQ</a>
@@ -211,9 +220,11 @@
     </div>
 
     <div class="form-row">
-      <label for="s-topic">Topic</label>
+      <label for="s-topic">Tell Us What You Need</label>
       <select id="s-topic">
-        <option value="">Select a topic…</option>
+        <option value="">Please select an option</option>
+        <option value="trial">Need a free trial</option>
+        <option value="subscription">Need a subscription</option>
         <option value="install">Installation help</option>
         <option value="license">License / activation issue</option>
         <option value="download">Download problem</option>
