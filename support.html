@@ -224,7 +224,7 @@
       <select id="s-topic">
         <option value="">Please select an option</option>
         <option value="trial">Need a free trial</option>
-        <option value="subscription">Need a subscription</option>
+        <option value="license">Need license/renewal</option>
         <option value="install">Installation help</option>
         <option value="license">License / activation issue</option>
         <option value="download">Download problem</option>
@@ -314,6 +314,15 @@
       btn.textContent = 'Send Message';
     }
   }
+  // Auto-fill topic from URL parameter
+  window.addEventListener('DOMContentLoaded', function() {
+    const params = new URLSearchParams(window.location.search);
+    const topic = params.get('topic');
+    if (topic) {
+      const topicSelect = document.getElementById('s-topic');
+      topicSelect.value = topic;
+    }
+  });
 </script>
 
 </body>
