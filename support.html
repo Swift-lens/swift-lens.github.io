@@ -423,6 +423,7 @@
           name, email,
           license_key: document.getElementById('s-key').value.trim(),
           topic, message: msg,
+          submitted_at_bangladesh: new Date().toLocaleString('en-BD', { timeZone: 'Asia/Dhaka', dateStyle: 'full', timeStyle: 'short' }),
           _subject: 'New SwiftLens Support Request — ' + topic,
           _captcha: 'false',
         }),
