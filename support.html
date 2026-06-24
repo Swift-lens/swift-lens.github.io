@@ -416,15 +416,15 @@
     btn.textContent = 'Sending…';
 
     try {
-      const res = await fetch('https://api.web3forms.com/submit', {
+      const res = await fetch('https://formsubmit.co/ajax/mashurakib222@gmail.com', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
-          access_key: 'YOUR_WEB3FORMS_KEY',
-          to: 'mashurakib222@gmail.com',
           name, email,
           license_key: document.getElementById('s-key').value.trim(),
           topic, message: msg,
+          _subject: 'New SwiftLens Support Request — ' + topic,
+          _captcha: 'false',
         }),
       });
 
