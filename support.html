@@ -288,7 +288,7 @@
       <div class="contact-info-item">
         <div class="contact-info-label">📧 Email Support</div>
         <div class="contact-info-value">
-          <a href="mailto:contact.swiftlens@gmail.com">contact.swiftlens@gmail.com →</a>
+          <a href="mailto:mashurakib222@gmail.com">mashurakib222@gmail.com →</a>
         </div>
       </div>
 
@@ -331,12 +331,12 @@
         </div>
         <div class="form-row">
           <label for="s-email">Email address</label>
-          <input type="email" id="s-email" placeholder="you@example.com">
+          <textarea id="s-email" placeholder="you@example.com" rows="1" style="resize:none;overflow:hidden;min-height:0;"></textarea>
         </div>
       </div>
 
       <div class="form-row">
-        <label for="s-key">License key (if applicable)</label>
+        <label for="s-key">License key <span style="color:var(--ink-muted);font-weight:400">(optional)</span></label>
         <input type="text" id="s-key" placeholder="SWIFTLENS-XXXX-YYYY-ZZZZ">
       </div>
 
@@ -351,12 +351,12 @@
           <option value="download">Download problem</option>
           <option value="bug">Bug or error</option>
           <option value="refund">Refund request</option>
-          <option value="other">Other</option>
+          <option value="other">Others</option>
         </select>
       </div>
 
       <div class="form-row">
-        <label for="s-msg">Message</label>
+        <label for="s-msg">Message <span id="msg-required-tag" style="color:var(--ink-muted);font-weight:400">(optional)</span></label>
         <textarea id="s-msg" placeholder="Describe your issue in detail — include any error messages you see, your Windows version, and what you were doing when the problem occurred."></textarea>
       </div>
 
@@ -386,13 +386,20 @@
 <script>
   async function submitForm() {
     const name  = document.getElementById('s-name').value.trim();
-    const email = document.getElementById('s-email').value.trim();
+    const email = document.getElementById('s-email').value.trim().replace(/\n/g, '');
     const topic = document.getElementById('s-topic').value;
     const msg   = document.getElementById('s-msg').value.trim();
     const msgEl = document.getElementById('form-msg');
     const btn   = document.getElementById('submit-btn');
 
-    if (!name || !email || !topic || !msg) {
+    if (topic === 'other' && !msg) {
+      msgEl.textContent = 'Please describe your issue in the Message field.';
+      msgEl.className = 'msg error';
+      msgEl.style.display = 'block';
+      document.getElementById('s-msg').focus();
+      return;
+    }
+    if (!name || !email || !topic) {
       msgEl.textContent = 'Please fill in all required fields.';
       msgEl.className = 'msg error';
       msgEl.style.display = 'block';
@@ -408,13 +415,13 @@
     btn.disabled = true;
     btn.textContent = 'Sending…';
 
-    // Using Formspree — replace YOUR_FORMSPREE_ID with your form ID
-    // Sign up free at formspree.io, create a form, get the ID
     try {
-      const res = await fetch('https://formspree.io/f/mdavowgp', {
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          access_key: 'YOUR_WEB3FORMS_KEY',
+          to: 'mashurakib222@gmail.com',
           name, email,
           license_key: document.getElementById('s-key').value.trim(),
           topic, message: msg,
@@ -437,6 +444,25 @@
       btn.textContent = 'Send Message';
     }
   }
+  // Make message mandatory when "other" is selected
+  document.getElementById('s-topic').addEventListener('change', function() {
+    const tag = document.getElementById('msg-required-tag');
+    if (this.value === 'other') {
+      tag.textContent = '(required)';
+      tag.style.color = 'var(--red)';
+    } else {
+      tag.textContent = '(optional)';
+      tag.style.color = 'var(--ink-muted)';
+    }
+  });
+
+  // Auto-resize email field as user types
+  const emailField = document.getElementById('s-email');
+  emailField.addEventListener('input', function() {
+    this.style.height = 'auto';
+    this.style.height = this.scrollHeight + 'px';
+  });
+
   // Auto-fill topic from URL parameter
   window.addEventListener('DOMContentLoaded', function() {
     const params = new URLSearchParams(window.location.search);
