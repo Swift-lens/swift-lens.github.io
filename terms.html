@@ -22,7 +22,7 @@
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: 'DM Sans', sans-serif; background: var(--bg);
+      font-family: 'Bahnschrift SemiBold SemiConden', sans-serif; background: var(--bg);
       color: var(--ink); line-height: 1.7; -webkit-font-smoothing: antialiased;
     }
     nav {
@@ -33,33 +33,36 @@
     }
     .nav-logo {
       font-family: 'Bahnschrift SemiBold SemiConden', sans-serif;
-      font-size: 1.4rem; color: var(--ink);
+      font-size: 1.8rem; font-weight: 900; color: var(--ink);
       text-decoration: none; letter-spacing: -.02em;
-      display: flex; align-items: center; gap: 0px;
+      display: flex; align-items: center; gap: 2px;
       margin-right: 10px;
     }
     .nav-logo span { color: var(--accent); }
+    .nav-logo:hover { text-decoration: none; }
     .nav-links { display: flex; gap: 8px; }
     .nav-links a {
       text-decoration: none; color: var(--ink-soft); font-size: .9rem;
       font-weight: 500; padding: 8px 14px; border-radius: 8px; transition: background .15s;
+      font-family: 'DM Sans', sans-serif;
     }
-    .nav-links a:hover { background: var(--line); }
+    .nav-links a:hover { background: var(--line); text-decoration: none; }
     .nav-cta { background: var(--ink) !important; color: #fff !important; padding: 9px 20px !important; }
 
     .legal-wrap { max-width: 720px; margin: 0 auto; padding: 60px 40px 80px; }
     .legal-meta { font-size: .8rem; color: var(--ink-muted); margin-bottom: 36px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
-    h1 { font-family: 'Instrument Serif', serif; font-size: 2.4rem; letter-spacing: -.03em; margin-bottom: 10px; }
-    h2 { font-family: 'Instrument Serif', serif; font-size: 1.4rem; letter-spacing: -.02em; margin: 36px 0 12px; }
-    p { font-size: .95rem; color: var(--ink-soft); margin-bottom: 14px; }
+    h1 { font-family: 'Bahnschrift SemiBold SemiConden', sans-serif; font-size: 2.4rem; letter-spacing: -.03em; margin-bottom: 10px; }
+    h2 { font-family: 'Bahnschrift SemiBold SemiConden', sans-serif; font-size: 1.4rem; letter-spacing: -.02em; margin: 36px 0 12px; }
+    p { font-size: .95rem; color: var(--ink-soft); margin-bottom: 14px; text-align: justify; text-justify: inter-character; hyphens: auto; -webkit-hyphens: auto; }
     ul { padding-left: 20px; margin-bottom: 14px; }
-    li { font-size: .95rem; color: var(--ink-soft); margin-bottom: 6px; }
+    li { font-size: .95rem; color: var(--ink-soft); margin-bottom: 6px; text-align: justify; text-justify: inter-character; hyphens: auto; -webkit-hyphens: auto; }
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
     .highlight-box {
       background: var(--amber-lt); border-left: 3px solid #f59e0b;
       padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 20px 0;
       font-size: .92rem; color: var(--amber);
+      text-align: justify; text-justify: inter-character; hyphens: auto; -webkit-hyphens: auto;
     }
 
     footer {
@@ -67,10 +70,11 @@
       display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
     }
     .footer-logo { font-family: 'Candara Light', sans-serif;font-size: 1.2rem; color: var(--ink);text-decoration: none;}
+    .footer-logo:hover { text-decoration: none; }
     .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
-    .footer-links a { font-size: .83rem; color: var(--ink-muted); text-decoration: none; }
-    .footer-links a:hover { color: var(--ink); }
-    .footer-copy { font-size: .8rem; color: var(--ink-muted); }
+    .footer-links a { font-size: .83rem; color: var(--ink-muted); text-decoration: none; font-family: 'DM Sans', sans-serif; }
+    .footer-links a:hover { color: var(--ink); text-decoration: none; }
+    .footer-copy { font-size: .8rem; color: var(--ink-muted); font-family: 'DM Sans', sans-serif; }
 
     @media (max-width: 640px) {
       nav { padding: 0 20px; }
@@ -93,7 +97,7 @@
 
 <div class="legal-wrap">
   <h1>Terms of Service</h1>
-  <div class="legal-meta">Last updated: June 2025 &nbsp;·&nbsp; Please read carefully before using SwiftLens.</div>
+  <div class="legal-meta">Last updated: June 2026 &nbsp;·&nbsp; Please read carefully before using SwiftLens.</div>
 
   <div class="highlight-box">
     <strong>Important:</strong> By downloading or using SwiftLens, you agree to these terms. If you do not agree, please do not use the software.
@@ -152,7 +156,7 @@
   <a href="index.html" class="footer-logo">SwiftLens</a>
   <div class="footer-links">
     <a href="index.html">Home</a>
-    <a href="privacy.html">Privacy Policy</a>
+    <a href="privacy.html">Privacy & Policy</a>
     <a href="support.html">Support</a>
   </div>
   <div class="footer-copy">© 2026 SwiftLens. All rights reserved.</div>
