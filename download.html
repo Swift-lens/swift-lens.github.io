@@ -172,6 +172,35 @@
     }
     input::placeholder { color: var(--ink-muted); }
 
+    /* Key input with show/hide toggle */
+    .key-input-wrap {
+      position: relative;
+    }
+    .key-input-wrap input {
+      padding-right: 46px;
+    }
+    .toggle-visibility {
+      position: absolute;
+      right: 6px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px 8px;
+      border-radius: 8px;
+      color: var(--ink-muted);
+      font-size: .78rem;
+      font-weight: 600;
+      font-family: 'DM Sans', sans-serif;
+      transition: background .15s, color .15s;
+      user-select: none;
+    }
+    .toggle-visibility:hover {
+      background: var(--line);
+      color: var(--ink);
+    }
+
     .turnstile-wrap { margin: 18px 0; }
 
     .btn-validate {
@@ -342,14 +371,17 @@
     <div class="card-body">
 
       <label for="key-input">Your License Key</label>
-      <input
-        type="password"
-        id="key-input"
-        placeholder="SWIFTLENS-XXXX-YYYY-ZZZZ"
-        autocomplete="off"
-        spellcheck="false"
-        maxlength="64"
-      >
+      <div class="key-input-wrap">
+        <input
+          type="password"
+          id="key-input"
+          placeholder="SWIFTLENS-XXXX-YYYY-ZZZZ"
+          autocomplete="off"
+          spellcheck="false"
+          maxlength="64"
+        >
+        <button type="button" class="toggle-visibility" id="toggle-key-btn" onclick="toggleKeyVisibility()">Show</button>
+      </div>
 
       <label for="version-select">Version</label>
       <select id="version-select">
@@ -411,6 +443,14 @@
 
   let _token       = null;
   let _timerHandle = null;
+
+  function toggleKeyVisibility() {
+    const input = document.getElementById("key-input");
+    const btn   = document.getElementById("toggle-key-btn");
+    const showing = input.type === "text";
+    input.type      = showing ? "password" : "text";
+    btn.textContent = showing ? "Show" : "Hide";
+  }
 
   function showMsg(text, type) {
     const el = document.getElementById("msg-box");
