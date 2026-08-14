@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SwiftLens — Free 7-Day Trial</title>
+<meta name="description" content="Your invisible AI assistant. Screen analysis, real-time interview help, offline AI, and more — try SwiftLens free for 7 days.">
+
+<!-- Open Graph / Link preview tags -->
+<meta property="og:title" content="SwiftLens: your invisible AI assistant | FREE TRIAL">
+<meta property="og:description" content="Please click the link to complete this form.">
+<meta property="og:image" content="https://swift-lens.github.io/trial-preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="1200">
+<meta property="og:url" content="https://swift-lens.github.io/trial.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SwiftLens: your invisible AI assistant | FREE TRIAL">
+<meta name="twitter:description" content="Please click the link to complete this form.">
+<meta name="twitter:image" content="https://swift-lens.github.io/trial-preview.png">
+
+<link rel="icon" href="https://swift-lens.github.io/Swift_Lens.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg: #060a16;
+    --bg-panel: #0b1226;
+    --bg-panel-2: #0e1730;
+    --line: rgba(120,170,255,0.16);
+    --ice: #bfe8ff;
+    --blue: #4fb3ff;
+    --blue-deep: #1f6fe0;
+    --text: #eaf3ff;
+    --text-dim: #93a4c4;
+    --mono: 'JetBrains Mono', monospace;
+    --display: 'Space Grotesk', sans-serif;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--bg);
+    background-image:
+      radial-gradient(ellipse 900px 500px at 15% -5%, rgba(47,111,224,0.25), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 100% 10%, rgba(79,179,255,0.12), transparent 60%);
+    color: var(--text);
+    font-family: var(--display);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a{ color: inherit; }
+
+  .wrap{ max-width: 780px; margin: 0 auto; padding: 0 20px; }
+
+  /* HERO */
+  header.hero{
+    position: relative;
+    padding: 56px 0 40px;
+    text-align: center;
+    overflow: hidden;
+  }
+  .hero-badge{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--ice);
+    border: 1px solid var(--line); border-radius: 999px;
+    padding: 6px 14px; margin-bottom: 26px;
+    background: rgba(79,179,255,0.06);
+  }
+  .hero-badge .dot{
+    width:6px; height:6px; border-radius:50%; background: var(--blue);
+    box-shadow: 0 0 8px 2px rgba(79,179,255,0.7);
+  }
+  .hero img.mark{
+    width: 168px; max-width: 46vw; filter: drop-shadow(0 0 40px rgba(79,179,255,0.35));
+  }
+  h1{
+    font-size: clamp(30px, 6vw, 46px);
+    line-height: 1.12;
+    margin: 26px 0 14px;
+    letter-spacing: -0.01em;
+  }
+  h1 em{
+    font-style: normal;
+    background: linear-gradient(90deg, var(--blue) 0%, var(--ice) 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .hero p.sub{
+    color: var(--text-dim);
+    font-size: 16px; line-height: 1.6;
+    max-width: 480px; margin: 0 auto;
+  }
+
+  /* HUD demo strip, echoes the homepage HUD */
+  .hud{
+    margin: 34px auto 0;
+    max-width: 560px;
+    background: linear-gradient(180deg, var(--bg-panel-2), var(--bg-panel));
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    text-align: left;
+    overflow: hidden;
+    box-shadow: 0 20px 60px -20px rgba(0,20,60,0.6);
+  }
+  .hud-top{
+    display:flex; align-items:center; gap:8px;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--line);
+    font-family: var(--mono); font-size: 11px; color: var(--text-dim);
+  }
+  .hud-top .lightning{ color: var(--blue); }
+  .hud-body{
+    font-family: var(--mono); font-size: 13px; line-height: 1.7;
+    padding: 16px 18px; color: var(--ice);
+  }
+  .hud-body .q{ color: var(--text-dim); }
+  .hud-body .a{ color: var(--text); }
+
+  /* SECTIONS */
+  section{ padding: 54px 0; border-top: 1px solid var(--line); }
+  .eyebrow{
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--blue);
+    margin: 0 0 10px;
+  }
+  h2{
+    font-size: clamp(22px, 4vw, 30px);
+    margin: 0 0 30px;
+    letter-spacing: -0.01em;
+  }
+
+  .feature{
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: 18px;
+    padding: 20px 0;
+    border-top: 1px solid var(--line);
+  }
+  .feature:first-of-type{ border-top: none; }
+  .feature-num{
+    font-family: var(--mono);
+    color: var(--blue);
+    font-size: 13px;
+    opacity: 0.7;
+    padding-top: 3px;
+  }
+  .feature h3{
+    margin: 0 0 6px;
+    font-size: 17px;
+    font-weight: 600;
+  }
+  .feature p{
+    margin: 0;
+    color: var(--text-dim);
+    font-size: 14.5px;
+    line-height: 1.6;
+  }
+
+  /* CTA / FORM */
+  .cta-panel{
+    background: linear-gradient(180deg, rgba(79,179,255,0.08), rgba(79,179,255,0.02));
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 34px 26px;
+    text-align: center;
+  }
+  .cta-panel h2{ margin-bottom: 10px; }
+  .cta-panel p{
+    color: var(--text-dim); font-size: 15px; margin: 0 0 4px;
+  }
+  .cta-panel .days{
+    font-family: var(--mono);
+    color: var(--ice);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .form-frame-wrap{
+    margin-top: 22px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: #f6f8fb;
+  }
+  iframe.gform{
+    width: 100%;
+    height: 1250px;
+    border: none;
+    display: block;
+  }
+
+  footer{
+    text-align: center;
+    padding: 40px 20px 60px;
+    color: var(--text-dim);
+    font-family: var(--mono);
+    font-size: 12px;
+  }
+  footer a{ color: var(--blue); text-decoration: none; }
+
+  @media (max-width: 520px){
+    .hud-body{ font-size: 12px; }
+    iframe.gform{ height: 1350px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="hero-badge"><span class="dot"></span>7-day free trial</span>
+    <img class="mark" src="https://swift-lens.github.io/Swift_Lens.png" alt="SwiftLens">
+    <h1>Your invisible <em>AI assistant</em></h1>
+    <p class="sub">Ever had the perfect answer in your head, but blanked the second someone asked? SwiftLens listens quietly beside you and surfaces the answer in real time — without anyone else seeing it.</p>
+
+    <div class="hud">
+      <div class="hud-top"><span class="lightning">⚡</span> SwiftLens HUD</div>
+      <div class="hud-body">
+        <div class="q">Q: What's the time complexity of this algorithm?</div>
+        <div class="a">The outer loop runs n times, the inner binary search takes log n —<br>
+        combined complexity: <strong>O(n log n)</strong>, space O(1).</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="features">
+  <div class="wrap">
+    <p class="eyebrow">What you get</p>
+    <h2>Six ways SwiftLens works for you</h2>
+
+    <div class="feature">
+      <div class="feature-num">01</div>
+      <div>
+        <h3>Screen Analyzer 💻</h3>
+        <p>Scans anything visible on your screen and answers questions about it directly from a HUD overlay — from a broken Excel formula to a complex math problem.</p>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature-num">02</div>
+      <div>
+        <h3>Telegram Delivery 📲</h3>
+        <p>Sends the solved output straight to Telegram — run SwiftLens across two devices to speed up your workflow.</p>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature-num">03</div>
+      <div>
+        <h3>Interview Assistant 🎓</h3>
+        <p>Transcribes the other side of a meeting or interview in real time and surfaces answers before you speak. Upload your CV for even more personalized responses.</p>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature-num">04</div>
+      <div>
+        <h3>Ask AI Mode 👨‍💻</h3>
+        <p>A full general-purpose AI chatbot, built into the same HUD, for any question — no need to switch apps.</p>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature-num">05</div>
+      <div>
+        <h3>Offline AI 🛜</h3>
+        <p>Works with no internet connection. SwiftLens's offline AI can dig up anything for research or classwork, all in real time.</p>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature-num">06</div>
+      <div>
+        <h3>Smart Copy 📋</h3>
+        <p>Copy anything on screen — a table, disabled website text, or math — easy peasy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="signup">
+  <div class="wrap">
+    <div class="cta-panel">
+      <p class="eyebrow" style="text-align:center;">Get started</p>
+      <h2>Claim your free trial</h2>
+      <p class="days">7 days · full access · no credit card charge</p>
+
+      <div class="form-frame-wrap">
+        <iframe class="gform"
+          src="https://docs.google.com/forms/d/e/1FAIpQLSezc1qquxh2RdXMjS6H6HOziqO_gqB2k6Sbvi5wporQkTMJJQ/viewform?embedded=true"
+          title="SwiftLens Free Trial Signup">
+          Loading form…
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 SwiftLens · <a href="https://swift-lens.github.io/">swift-lens.github.io</a>
+</footer>
+
+</body>
+</html>
