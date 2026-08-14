@@ -137,7 +137,7 @@
     display: grid;
     grid-template-columns: 52px 1fr;
     gap: 18px;
-    padding: 20px 0;
+    padding: 26px 0;
     border-top: 1px solid var(--line);
   }
   .feature:first-of-type{ border-top: none; }
@@ -154,10 +154,28 @@
     font-weight: 600;
   }
   .feature p{
-    margin: 0;
+    margin: 0 0 14px;
     color: var(--text-dim);
     font-size: 14.5px;
     line-height: 1.6;
+  }
+  .feature .fb-link{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--blue);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    margin-bottom: 14px;
+  }
+  .feature .fb-link:hover{ border-bottom-color: var(--blue); }
+  .feature img.shot{
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+    border: 1px solid var(--line);
   }
 
   /* CTA / FORM */
@@ -240,6 +258,8 @@
       <div>
         <h3>Screen Analyzer 💻</h3>
         <p>Scans anything visible on your screen and answers questions about it directly from a HUD overlay — from a broken Excel formula to a complex math problem.</p>
+        <a class="fb-link" href="https://www.facebook.com/share/v/18zug7Gmx4/" target="_blank" rel="noopener">▶ Watch on Facebook</a>
+        <img class="shot" src="img/feature-01-screen-analyzer.png" alt="SwiftLens Screen Analyzer in use">
       </div>
     </div>
 
@@ -248,6 +268,8 @@
       <div>
         <h3>Telegram Delivery 📲</h3>
         <p>Sends the solved output straight to Telegram — run SwiftLens across two devices to speed up your workflow.</p>
+        <a class="fb-link" href="https://www.facebook.com/share/r/18FzvmnE3P/" target="_blank" rel="noopener">▶ Watch on Facebook</a>
+        <img class="shot" src="img/feature-02-telegram-delivery.png" alt="SwiftLens Telegram delivery in use">
       </div>
     </div>
 
@@ -256,14 +278,18 @@
       <div>
         <h3>Interview Assistant 🎓</h3>
         <p>Transcribes the other side of a meeting or interview in real time and surfaces answers before you speak. Upload your CV for even more personalized responses.</p>
+        <a class="fb-link" href="https://www.facebook.com/share/r/1Go4foZ9e6/" target="_blank" rel="noopener">▶ Watch on Facebook</a>
+        <img class="shot" src="img/feature-03-interview-assistant.png" alt="SwiftLens Interview Assistant in use">
       </div>
     </div>
 
     <div class="feature">
       <div class="feature-num">04</div>
       <div>
-        <h3>Ask AI Mode 👨‍💻</h3>
-        <p>A full general-purpose AI chatbot, built into the same HUD, for any question — no need to switch apps.</p>
+        <h3>Smart Copy 📋</h3>
+        <p>Copy anything on screen — a table, disabled website text, or math — easy peasy.</p>
+        <a class="fb-link" href="https://www.facebook.com/share/r/1EfXGKDekP/" target="_blank" rel="noopener">▶ Watch on Facebook</a>
+        <img class="shot" src="img/feature-04-smart-copy.png" alt="SwiftLens Smart Copy in use">
       </div>
     </div>
 
@@ -272,14 +298,17 @@
       <div>
         <h3>Offline AI 🛜</h3>
         <p>Works with no internet connection. SwiftLens's offline AI can dig up anything for research or classwork, all in real time.</p>
+        <a class="fb-link" href="https://www.facebook.com/share/r/196GewPgYe/" target="_blank" rel="noopener">▶ Watch on Facebook</a>
+        <img class="shot" src="img/feature-05-offline-ai.png" alt="SwiftLens Offline AI in use">
       </div>
     </div>
 
     <div class="feature">
       <div class="feature-num">06</div>
       <div>
-        <h3>Smart Copy 📋</h3>
-        <p>Copy anything on screen — a table, disabled website text, or math — easy peasy.</p>
+        <h3>Ask AI Mode 👨‍💻</h3>
+        <p>A full general-purpose AI chatbot, built into the same HUD, for any question — no need to switch apps.</p>
+        <img class="shot" src="img/feature-06-ask-ai-mode.png" alt="SwiftLens Ask AI mode in use">
       </div>
     </div>
   </div>
