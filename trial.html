@@ -92,8 +92,18 @@
   .hero p.sub{
     color: var(--text-dim);
     font-size: 16px; line-height: 1.6;
-    max-width: 480px; margin: 0 auto;
+    text-align: justify;
+    margin: 0;
   }
+  .sub-box{
+    max-width: 480px;
+    margin: 0 auto;
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 18px 22px;
+  }
+  .sub-box .sub{ color: #16223d; }
 
   /* HUD demo strip, echoes the homepage HUD */
   .hud{
@@ -235,7 +245,9 @@
     <span class="hero-badge"><span class="dot"></span>7-day free trial</span>
     <img class="mark" src="https://swift-lens.github.io/Swift_Lens.png" alt="SwiftLens">
     <h1>Your invisible <em>AI assistant</em></h1>
-    <p class="sub">One invisible layer for everything: instant answers on your screen, real-time help in interviews, a chatbot built in, and an offline brain for when the internet is out. All without anyone noticing.</p>
+    <div class="sub-box">
+      <p class="sub">One invisible layer for everything: instant answers on your screen, real-time help in interviews, a chatbot built in, and an offline brain for when the internet is out. All without anyone noticing.</p>
+    </div>
 
   </div>
 </header>
